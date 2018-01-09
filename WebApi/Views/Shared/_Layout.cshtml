@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    @*для перемещений*@
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
+
+    <script src="~/Scripts/FolderScript.js"></script>
+
+</head>
+<body draggable="false">
+
+    @RenderBody()
+
+
+
+    <style>
+        .folder {
+            padding: 5px 15px 5px 15px;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+        }
+        .folderDropLight {
+            background-color: rgba(76, 255, 0, 0.66);
+        }
+
+        .imageButton {
+            background-size: 50%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        .folderClosed {
+            background-image: url(../../Content/picture/iconFolderClosed.png);
+        }
+
+        .folderOpen {
+            background-image: url(../../Content/picture/iconFolderOpen.png);
+        }
+
+        .folderDelete {
+            background-image: url(../../Content/picture/iconDelete.png);
+            background-color: red;
+        }
+
+        .folderRename {
+            background-image: url(../../Content/picture/iconFolderRename.png);
+        }
+
+        .folderAdd {
+            background-image: url(../../Content/picture/iconFolderAdd.png);
+        }
+
+        .hiddenBlock {
+            display: none;
+        }
+
+    </style>
+</body>
+</html>

@@ -1,0 +1,340 @@
+﻿<script>
+    $(function () {
+
+        $(".deleteFolder").draggable();
+
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div id="listFolders" class="col-xs-6">
+
+            </div>
+
+            <div id="navigation" class="col-xs-6">
+                <div id="editFolder" class="col-xs-12">
+                    <div><h1 id="nameFolder">Add new folder</h1></div>
+                    <label>Name:</label>
+                    <input type="text" id="newNameFolder" />
+                    <input type="hidden" id="idEditFolder" />
+                    <input type="hidden" id="idParentFolder" />
+                    <bytton id="saveFolder" class="btn btn-success">Save</bytton>
+                </div>
+
+                <div id="addFolder" class="col-xs-12">
+                    <div><h1>Add new folder</h1></div>
+                    <label>Name:</label>
+                    <input type="text" id="newFolderName" />
+                    @*<input type="hidden" id="idEditFolder" />*@
+                    <input type="hidden" id="idAddParentFolder" />
+                    <bytton id="addNewFolder" class="btn btn-success">Add</bytton>
+                </div>
+                <div id="deleteFolder" class="col-xs-12 deleteFolder">
+                    <div class="col-xs-12 sos">
+                        Перетащи меня
+                    </div>
+                    <div id="deleteFolder" class="col-xs-12 deleteFolder">
+                        <div class="col-xs-12 sos">
+                            Перетащи меня
+                        </div>
+                        <div id="deleteFolder" class="col-xs-12 deleteFolder">
+                            <div class="col-xs-12 sos">
+                                Перетащи меня
+                            </div>
+                            <div id="deleteFolder" class="col-xs-12 deleteFolder">
+                                <div class="col-xs-12 sos">
+                                    Перетащи меня
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="deleteFolder" class="col-xs-12 deleteFolder">
+                        <div class="col-xs-12 sos">
+                            Перетащи меня
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+            //$(document).ready(function () {
+
+            //    GetFolders();
+
+
+            //    $("#listFolders").on("click", function (event) {
+            //        event.preventDefault();
+            //        var target = event.target;
+            //        var subFolders = target.parentElement.getElementsByClassName('subFolders')[0];
+
+            //        if (target.tagName === 'BUTTON') {
+            //            OnClickButton(target);
+            //        }
+
+            //    });
+
+
+
+            //    $("#addBook").click(function (event) {
+            //        event.preventDefault();
+            //        AddBook();
+            //    });
+
+            //});
+
+            //function GetFolders(idButton, subfolders) {
+            //    var result;
+            //    if (idButton === undefined) {
+            //        $.ajax({
+            //            url: '/api/folder',
+            //            type: 'GET',
+            //            dataType: 'json',
+            //            success: function (data) {
+            //                WriteFirstResponse(data);
+            //            },
+            //            error: function (x, y, z) {
+            //                alert(x + '\n' + y + '\n' + z);
+            //            }
+            //        });
+            //    }
+            //    if (subfolders !== undefined) {
+            //        $.ajax({
+            //            url: '/api/folder/subfolder/' + idButton,
+            //            type: 'GET',
+            //            dataType: 'json',
+            //            success: function (data) {
+            //                WriteResponseFolders(data, subfolders);
+            //            },
+            //            error: function (x, y, z) {
+            //                alert(x + '\n' + y + '\n' + z);
+            //            }
+            //        });
+            //    }
+            //}
+
+            //function OnClickButton(target) {
+            //    var cssClassButton = target.className;
+            //    if (cssClassButton.indexOf('folderClosed') > 0) {
+            //        var parentId = "#" + target.parentElement.id;
+            //        var subFolders = $(parentId).find('.subFolders').eq(0);
+            //        GetFolders(target.firstChild.id, subFolders);
+
+            //        target.className = target.className.replace("folderClosed", "folderOpen");
+            //    }
+            //    if (cssClassButton.indexOf("folderOpen") > 0) {
+            //        var parentId = "#" + target.parentElement.id;
+            //        var subFolders = $(parentId).find('.subFolders').eq(0);
+            //        subFolders.html("");
+
+            //        target.className = target.className.replace("folderOpen", "folderClosed");
+            //    }
+            //    if (cssClassButton.indexOf("folderRename") > 0) {
+
+            //        FolderFormRename(target);
+            //    }
+            //    if (cssClassButton.indexOf("folderDelete") > 0) {
+
+            //    }
+
+
+            //}
+
+            //function WriteFirstResponse(folders) {
+            //    var strResult = GetHTMLforFolders(folders);
+            //    $("#listFolders").html(strResult);
+            //}
+
+            //function WriteResponseFolders(folders, subFolders) {
+            //    var htmlString = GetHTMLforFolders(folders);
+            //    subFolders.html(htmlString);
+            //}
+
+            //function GetHTMLforFolders(folders) {
+            //    var htmlString = "";
+            //    var buttonRename = "<button type=\"button\" class=\"btn btn-default btn-lg col-xs-1 imageButton folderRename\"></button>";
+            //    var buttonDelete = "<button type=\"button\" class=\"btn btn-default btn-lg col-xs-1 imageButton folderDelete\"></button>";
+
+            //    $.each(folders, function (index, folder) {
+            //        htmlString += "<div id=" + folder.Name + " class=\"col-xs-12 folder\">";
+            //        var hiddenField = "<input type=\"hidden\" id=\"" + folder.Id + "\"/>";
+            //        var buttonFolder = "<button type=\"button\" class=\"btn btn-default btn-lg col-xs-1 imageButton folderClosed buttonClickOpen\">" + hiddenField + " </button >";
+            //        //var buttonFolderName = "<span id=\"folderName\" class=\"col-xs-9\">" + folder.Name + "</span>";
+            //        var buttonFolderName = "<span class=\"col-xs-9\">" + folder.Name + "</span>";
+            //        var childrenFolder = "<div class=\"subFolders\"> </div>";
+
+            //        htmlString += buttonFolder + buttonFolderName + buttonRename + buttonDelete + childrenFolder;
+
+            //        htmlString += "</div>";
+            //    });
+            //    return htmlString;
+            //}
+
+            //function FolderFormRename(target) {
+
+            //    var nameFolder = target.parentElement.id;
+            //    $("#nameFolder").text(nameFolder);
+            //    $("#newNameFolder").val(nameFolder);
+
+            //}
+
+            //function FolderRename() {
+            //    var folder = {
+            //        Id: $
+            //        Name: $("#newNameFolder").val()
+            //    };
+            //    $.ajax({
+            //        url: '/api/folder/' + idButton,
+            //        type: 'POST',
+            //        dataType: JSON.stringify(book),
+            //        contentType: "application/json;charset=utf-8",
+            //        success: function (data) {
+            //            WriteResponseFolders(data, subfolders);
+            //        },
+
+            //    });
+            //}
+
+
+
+
+
+
+
+
+
+            //// Получение всех книг по ajax-запросу
+
+
+            ////function OpenFolder(id) {
+            ////    $.ajax({
+            ////        url: '/api/folder',
+            ////        type: 'GET',
+            ////        dataType: 'json',
+            ////        success: function (data) {
+            ////            WriteResponse(data);
+            ////        },
+            ////        error: function (x, y, z) {
+            ////            alert(x + '\n' + y + '\n' + z);
+            ////        }
+            ////    });
+            ////}
+            //// Добавление новой книги
+            //function AddBook() {
+            //    // получаем значения для добавляемой книги
+            //    var book = {
+            //        Name: $('#addName').val(),
+            //        Author: $('#addAuthor').val(),
+            //        Year: $('#addYear').val()
+            //    };
+
+            //    $.ajax({
+            //        url: '/api/values',
+            //        type: 'POST',
+            //        data: JSON.stringify(book),
+            //        contentType: "application/json;charset=utf-8",
+            //        success: function (data) {
+            //            GetAllBooks();
+            //        },
+            //        error: function (x, y, z) {
+            //            alert(x + '\n' + y + '\n' + z);
+            //        }
+            //    });
+            //}
+            //// Удаление книги
+            //function DeleteBook(id) {
+
+            //    $.ajax({
+            //        url: '/api/values/' + id,
+            //        type: 'DELETE',
+            //        contentType: "application/json;charset=utf-8",
+            //        success: function (data) {
+            //            GetAllBooks();
+            //        },
+            //        error: function (x, y, z) {
+            //            alert(x + '\n' + y + '\n' + z);
+            //        }
+            //    });
+            //}
+            //// редактирование книги
+            //function EditBook() {
+            //    var id = $('#editId').val()
+            //    // получаем новые значения для редактируемой книги
+            //    var book = {
+            //        Id: $('#editId').val(),
+            //        Name: $('#editName').val(),
+            //        Author: $('#editAuthor').val(),
+            //        Year: $('#editYear').val()
+            //    };
+            //    $.ajax({
+            //        url: '/api/values/' + id,
+            //        type: 'PUT',
+            //        data: JSON.stringify(book),
+            //        contentType: "application/json;charset=utf-8",
+            //        success: function (data) {
+            //            GetAllBooks();
+            //        },
+            //        error: function (x, y, z) {
+            //            alert(x + '\n' + y + '\n' + z);
+            //        }
+            //    });
+            //}
+            //// вывод полученных данных на экран
+
+            //// обработчик удаления
+            //function DeleteItem(el) {
+
+            //    // получаем id удаляемого объекта
+            //    var id = $(el).attr('data-item');
+            //    DeleteBook(id);
+            //}
+            //// обработчик редактирования
+            //function EditItem(el) {
+
+            //    // получаем id редактируемого объекта
+            //    var id = $(el).attr('data-item');
+            //    GetBook(id);
+            //}
+            //// вывод данных редактируемой книги в поля для редактирования
+            //function ShowBook(book) {
+            //    if (book != null) {
+            //        $("#createBlock").css('display', 'none');
+            //        $("#editBlock").css('display', 'block');
+            //        $("#editId").val(book.Id);
+            //        $("#editName").val(book.Name);
+            //        $("#editAuthor").val(book.Author);
+            //        $("#editYear").val(book.Year);
+            //    }
+            //    else {
+            //        alert("Такая книга не существует");
+            //    }
+            //}
+            //// запрос книги на редактирование
+            //function GetBook(id) {
+
+            //    $.ajax({
+            //        url: '/api/values/' + id,
+            //        type: 'GET',
+            //        dataType: 'json',
+            //        success: function (data) {
+            //            ShowBook(data);
+            //        },
+            //        error: function (x, y, z) {
+            //            alert(x + '\n' + y + '\n' + z);
+            //        }
+            //    });
+            //}
+</script>
